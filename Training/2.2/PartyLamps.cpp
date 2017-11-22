@@ -40,13 +40,6 @@ bool check(std::vector<int> &lamps) {
     return true;
 }
 
-long long calc(std::vector<int> &lamps) {
-    long long num = 0;
-    for (int i = n; i > 0; i--)
-        num += lamps[i] * pow(2, n-i);
-    return num;
-}
-
 int main() {
     FILE* in = fopen("lamps.in", "r");
     fscanf(in, "%d\n%d", &n, &c);
