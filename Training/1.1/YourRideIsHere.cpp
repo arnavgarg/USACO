@@ -1,5 +1,5 @@
 /*
-ID: arnavga1
+ID: your id
 PROG: ride
 LANG: C++
 */
@@ -9,34 +9,21 @@ LANG: C++
 #include<string>
 using namespace std;
 
-int computeValue(string input);
-bool canGo(int cometVal, int groupVal);
+int compute(string input) {
+    int total = 1;
+    for (int i = 0; i < input.size(); i++)
+        total *= input[i]-'A'+1;
+    return total;
+}
 
-int main()
-{
+int main() {
     ifstream fin("ride.in");
     ofstream fout("ride.out");
     string comet, group;
     fin >> comet >> group;
 
-    bool isGoing = canGo(computeValue(comet), computeValue(group));
-    if (isGoing)
+    if (compute(comet) % 47 == compute(group) % 47)
         fout << "GO" << endl;
     else
         fout << "STAY" << endl;
-}
-
-int computeValue(string input)
-{
-    int total = 1;
-    for (int i = 0; i < input.size(); i++)
-        total *= input.at(i) - 'A' + 1;
-    return total;
-}
-
-bool canGo(int cometVal, int groupVal)
-{
-    if ((cometVal % 47) == (groupVal % 47))
-        return true;
-    return false;
 }
